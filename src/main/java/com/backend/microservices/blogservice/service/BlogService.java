@@ -1,6 +1,6 @@
 package com.backend.microservices.blogservice.service;
 
-import com.backend.microservices.blogservice.contants.Contants;
+import com.backend.microservices.blogservice.contants.Constants;
 import com.backend.microservices.blogservice.dto.Blog;
 import com.backend.microservices.blogservice.exception.DateOfCreationNotValidException;
 import com.backend.microservices.blogservice.exception.NoBlogPresentException;
@@ -28,16 +28,15 @@ public class BlogService {
     public Blog getBlogByIdService(String blogId) throws NoBlogPresentException {
         Optional<Blog> blog = blogRepo.findById(blogId);
         if (blog.isEmpty()){
-                throw new NoBlogPresentException(Contants.NO_USER_PRESENT_WITH_USERID + blogId);
+                throw new NoBlogPresentException(Constants.NO_USER_PRESENT_WITH_USERID + blogId);
         }
         return blog.get();
     }
 
     public Blog addBlogService(Blog Blog) {
         if(Blog.getDateOfCreation().before(get200YearOldDate())){
-            log.info(Contants.EXCEPTION_OCCURED +this.getClass().getName() +":"+Thread.currentThread().getStackTrace()[1].getMethodName() + Contants.EXCEPTION_MESSAGE + Contants.DOC_NOT_VALID);
-            throw new DateOfCreationNotValidException(Contants.DOC_NOT_VALID);
-
+            log.info(Constants.EXCEPTION_OCCURED +this.getClass().getName() +":"+Thread.currentThread().getStackTrace()[1].getMethodName() + Constants.EXCEPTION_MESSAGE + Constants.DOC_NOT_VALID);
+            throw new DateOfCreationNotValidException(Constants.DOC_NOT_VALID);
         }
         return blogRepo.save(Blog);
     }
@@ -50,8 +49,8 @@ public class BlogService {
 
     public Blog updateBlogByIdService(Blog Blog) {
         if(Blog.getDateOfCreation().before(get200YearOldDate())){
-            log.info(Contants.EXCEPTION_OCCURED +this.getClass().getName() +":"+Thread.currentThread().getStackTrace()[1].getMethodName() + Contants.EXCEPTION_MESSAGE + Contants.DOC_NOT_VALID);
-            throw new DateOfCreationNotValidException(Contants.DOC_NOT_VALID);
+            log.info(Constants.EXCEPTION_OCCURED +this.getClass().getName() +":"+Thread.currentThread().getStackTrace()[1].getMethodName() + Constants.EXCEPTION_MESSAGE + Constants.DOC_NOT_VALID);
+            throw new DateOfCreationNotValidException(Constants.DOC_NOT_VALID);
         }
         return blogRepo.save(Blog);
     }

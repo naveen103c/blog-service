@@ -1,6 +1,6 @@
 package com.backend.microservices.blogservice.contants;
 
-public class Contants {
+public class Constants {
     public static final String DOC_NOT_VALID = "Date of Creation is not valid. Please enter a valid DOC";
     public static final String EXCEPTION_OCCURED = "Exceptions Occured in : ";
     public static final String EXCEPTION_MESSAGE = " Exception message : ";

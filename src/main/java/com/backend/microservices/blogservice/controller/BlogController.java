@@ -22,6 +22,11 @@ public class BlogController {
     @Autowired
     private BlogService blogService;
 
+    @GetMapping
+    public String appName(){
+        return "Blog Service";
+    }
+
     @GetMapping("/blogs")
     public ResponseEntity<List<Blog>> getAllBlog(){
         List<Blog> BlogList = blogService.getAllBlogService();
